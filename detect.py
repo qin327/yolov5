@@ -77,7 +77,7 @@ def run(
     max_det=1000,  # maximum detections per image
     device="",  # cuda device, i.e. 0 or 0,1,2,3 or cpu
     view_img=False,  # show results
-    save_txt=False,  # save results to *.txt
+    save_txt=True,  # save results to *.txt
     save_csv=False,  # save results in CSV format
     save_conf=False,  # save confidences in --save-txt labels
     save_crop=False,  # save cropped prediction boxes
@@ -90,7 +90,7 @@ def run(
     project=ROOT / "runs/detect",  # save results to project/name
     name="exp",  # save results to project/name
     exist_ok=False,  # existing project/name ok, do not increment
-    line_thickness=3,  # bounding box thickness (pixels)
+    line_thickness=1,  # bounding box thickness (pixels)
     hide_labels=False,  # hide labels
     hide_conf=False,  # hide confidences
     half=False,  # use FP16 half-precision inference
@@ -157,6 +157,7 @@ def run(
         # NMS
         with dt[2]:
             pred = non_max_suppression(pred, conf_thres, iou_thres, classes, agnostic_nms, max_det=max_det)
+            # 使用 non_max_suppression 函數對模型的預測結果進行 NMS 過濾，以去除重疊的檢測框，僅保留信心值最高的檢測框
 
         # Second-stage classifier (optional)
         # pred = utils.general.apply_classifier(pred, classifier_model, im, im0s)
@@ -199,6 +200,12 @@ def run(
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
                 # Write results
+                '''
+                det: 變數包含了偵測結果，其中每一個元素代表一個檢測物件
+                xyxy: 是檢測框的四個角點座標（左上角和右下角）
+                conf: 信心值
+                cls: 預測物件的類別
+                '''
                 for *xyxy, conf, cls in reversed(det):
                     c = int(cls)  # integer class
                     label = names[c] if hide_conf else f"{names[c]}"
