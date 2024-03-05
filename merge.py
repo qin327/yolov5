@@ -2,11 +2,11 @@ import cv2
 import numpy as np
 
 # 載入車道辨識結果影片
-lane_video_path = 'path_to_lane_video.mp4'
+lane_video_path = 'video\output_solidWhiteRight_with_lines.mp4'
 lane_cap = cv2.VideoCapture(lane_video_path)
 
 # 載入車輛辨識結果影片
-vehicle_video_path = 'path_to_vehicle_video.mp4'
+vehicle_video_path = 'runs\detect\exp29\solidWhiteRight.mp4'
 vehicle_cap = cv2.VideoCapture(vehicle_video_path)
 
 # 檢查影片是否成功打開
