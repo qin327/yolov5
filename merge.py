@@ -20,7 +20,7 @@ width = int(lane_cap.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(lane_cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
 # 建立輸出影片
-output_video_path = 'path_to_output_video.mp4'
+output_video_path = 'video\merge_output.mp4'
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')
 output_video = cv2.VideoWriter(output_video_path, fourcc, fps, (width, height))
 
@@ -36,7 +36,7 @@ while True:
         break
 
     # 將兩個影片進行合併
-    combined_frame = cv2.addWeighted(frame_lane, 1, frame_vehicle, 0.8, 0)
+    combined_frame = cv2.addWeighted(frame_lane, 0.4, frame_vehicle, 0.8, 0)
 
     # 將合併結果寫入輸出影片
     output_video.write(combined_frame)
