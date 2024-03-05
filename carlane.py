@@ -66,4 +66,5 @@ while(True):
         break
 
 cap.release()
+output_video.release()
 cv2.destroyAllWindows()
