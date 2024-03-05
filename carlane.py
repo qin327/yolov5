@@ -4,6 +4,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 cap = cv2.VideoCapture('video\solidWhiteRight.mp4')
+output_video_path = 'video/output_carlane.mp4'
+
+# 獲取影片的基本資訊
+fps = cap.get(cv2.CAP_PROP_FPS)
+width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+
+# 設定輸出影片的路徑
+output_video_path = 'video\output_solidWhiteRight_with_lines.mp4'
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+output_video = cv2.VideoWriter(output_video_path, fourcc, fps, (width, height))
 
 while(True):
     ret,frame = cap.read()
@@ -49,6 +60,8 @@ while(True):
         except:
             pass
         cv2.imshow('frame',frame)
+
+        output_video.write(frame)
     if cv2.waitKey(20) & 0xFF == 27: # esc退出
         break
 
