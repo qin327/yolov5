@@ -8,9 +8,9 @@
 
 # Train/val/test sets as 1) dir: path/to/imgs, 2) file: path/to/imgs.txt, or 3) list: [path/to/imgs1, path/to/imgs2, ..]
 # 用絕對路徑比較好讓程式抓對資料
-path: C:\Users\k0987\yolov5\datasets\carlane # dataset root dir
-train: C:\Users\k0987\yolov5\datasets\carlane\images\train # train images (relative to 'path') 91 images
-val: C:\Users\k0987\yolov5\datasets\carlane\images\train # val images (relative to 'path') 91 images
+path: C:\Users\k0987\yolov5\datasets\car # dataset root dir
+train: C:\Users\k0987\yolov5\datasets\car\images\train # train images (relative to 'path') 91 images
+val: C:\Users\k0987\yolov5\datasets\car\images\train # val images (relative to 'path') 91 images
 test: # test images (optional)
 
 nc: 81 # 總共有81個類別
